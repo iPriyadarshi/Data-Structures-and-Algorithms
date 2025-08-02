@@ -1,2 +1,2 @@
-# Data-Structure-and-Algorithms
+# Data-Structures-and-Algorithms
 This repository contains DSA problems and their solutions...
