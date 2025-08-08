@@ -14,16 +14,14 @@ class Solution:
                 freq_map[i] = -1
             else:
                 freq_map[i] -= 1
-
         # finding the minimum element among all elements of both arrays
         min_1 = min(basket1)
         min_2 = min(basket2)
         global_min = min(min_1, min_2)
-        
         # Check if the sum of frequencies of an element in both arrays is odd, if so return -1
         for val in freq_map.values():
             if val % 2 != 0:
-        # Store the elements that need to be swapped in a list, and sort it.
+                return -1
 
         # Store the elements that need to be swapped in a vector, and sort it.
         extra1 = []
