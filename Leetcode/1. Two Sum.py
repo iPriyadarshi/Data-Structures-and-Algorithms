@@ -15,8 +15,6 @@ class Solution:
                 # Check if the current pair sums to the target
                 if nums[i] + nums[j] == target:
                     return [i, j]
-        # If no pair is found (though problem guarantees one), return empty
-        return []
 
 # Approach 2: Optimized with Hash Map
 class Solution:
