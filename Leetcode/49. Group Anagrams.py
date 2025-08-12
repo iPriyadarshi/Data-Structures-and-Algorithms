@@ -1,3 +1,5 @@
+from typing import List
+
 # Approach 1: Using Sorting
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
