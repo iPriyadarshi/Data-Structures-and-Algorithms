@@ -1,7 +1,6 @@
 # https://www.geeksforgeeks.org/problems/count-nodes-of-linked-list/0
 
 """
-
 #Linked list class
 class LinkedList:
     def __init__(self):
