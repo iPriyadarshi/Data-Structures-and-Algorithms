@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Returns a list of all elements in the matrix in spiral order.
  * Traverses the matrix in a clockwise spiral pattern starting from the top-left corner.
