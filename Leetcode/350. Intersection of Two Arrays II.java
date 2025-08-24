@@ -1,9 +1,10 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+// import java.util.Arrays;
+// import java.util.HashMap;
+// import java.util.Map;
 
-// Approach-1 (Using frequency array)
+// ===================================== Approach-1 (Using frequency array) =======================================
+
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
         /*
@@ -34,73 +35,75 @@ class Solution {
     }
 }
 
-// Approach-2 (Using sorting and 2-Pointers)
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        /*
-         * Time Complexity: O(nlogn + mlogm) where n and m are lengths of nums1 and
-         * nums2 (due to sorting)
-         * Space Complexity: O(1) if we don't count the space used for output array
-         */
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
+// =================================== Approach-2 (Using sorting and 2-Pointers) =======================================
 
-        ArrayList<Integer> result = new ArrayList<>();
+// class Solution {
+//     public int[] intersect(int[] nums1, int[] nums2) {
+//         /*
+//          * Time Complexity: O(nlogn + mlogm) where n and m are lengths of nums1 and
+//          * nums2 (due to sorting)
+//          * Space Complexity: O(1) if we don't count the space used for output array
+//          */
+//         Arrays.sort(nums1);
+//         Arrays.sort(nums2);
 
-        int i = 0, j = 0;
+//         ArrayList<Integer> result = new ArrayList<>();
 
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] < nums2[j]) {
-                i++;
-            } else if (nums1[i] > nums2[j]) {
-                j++;
-            } else {
-                result.add(nums1[i]);
-                i++;
-                j++;
-            }
-        }
+//         int i = 0, j = 0;
 
-        int[] arr = new int[result.size()];
-        for (int k = 0; k < result.size(); k++) {
-            arr[k] = result.get(k);
-        }
+//         while (i < nums1.length && j < nums2.length) {
+//             if (nums1[i] < nums2[j]) {
+//                 i++;
+//             } else if (nums1[i] > nums2[j]) {
+//                 j++;
+//             } else {
+//                 result.add(nums1[i]);
+//                 i++;
+//                 j++;
+//             }
+//         }
 
-        return arr;
-    }
-}
+//         int[] arr = new int[result.size()];
+//         for (int k = 0; k < result.size(); k++) {
+//             arr[k] = result.get(k);
+//         }
 
-// Approach-3 (Using map)
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        /*
-         * Time Complexity: O(n + m) where n and m are lengths of nums1 and nums2
-         * Space Complexity: O(min(n, m)) to store the HashMap
-         */
-        if (nums1.length > nums2.length) {
-            return intersect(nums2, nums1);
-        }
+//         return arr;
+//     }
+// }
 
-        Map<Integer, Integer> map = new HashMap<>();
+// ==================================================== Approach-3 (Using map) ==============================================
 
-        for (int num : nums1) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
+// class Solution {
+//     public int[] intersect(int[] nums1, int[] nums2) {
+//         /*
+//          * Time Complexity: O(n + m) where n and m are lengths of nums1 and nums2
+//          * Space Complexity: O(min(n, m)) to store the HashMap
+//          */
+//         if (nums1.length > nums2.length) {
+//             return intersect(nums2, nums1);
+//         }
 
-        ArrayList<Integer> result = new ArrayList<>();
+//         Map<Integer, Integer> map = new HashMap<>();
 
-        for (int num : nums2) {
-            if (map.containsKey(num) && map.get(num) > 0) {
-                result.add(num);
-                map.put(num, map.get(num) - 1);
-            }
-        }
+//         for (int num : nums1) {
+//             map.put(num, map.getOrDefault(num, 0) + 1);
+//         }
 
-        int[] arr = new int[result.size()];
-        for (int i = 0; i < result.size(); i++) {
-            arr[i] = result.get(i);
-        }
+//         ArrayList<Integer> result = new ArrayList<>();
 
-        return arr;
-    }
-}
+//         for (int num : nums2) {
+//             if (map.containsKey(num) && map.get(num) > 0) {
+//                 result.add(num);
+//                 map.put(num, map.get(num) - 1);
+//             }
+//         }
+
+//         int[] arr = new int[result.size()];
+//         for (int i = 0; i < result.size(); i++) {
+//             arr[i] = result.get(i);
+//         }
+
+//         return arr;
+//     }
+// }
