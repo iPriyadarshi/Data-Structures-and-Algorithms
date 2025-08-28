@@ -36,49 +36,51 @@ class Solution {
 }
 
 
+
 //Approach - 2 (Recursion + Memoization)
 //T.C : O(m*n)
 //S.C : O(m*n)
-class Solution {
-    int m, n;
 
-    private int solve(int i, int j, int[][] grid, int[][] t) {
-        if (i >= grid.length || j >= grid[0].length)
-            return 0;
+// class Solution {
+//     int m, n;
 
-        if (grid[i][j] == 0)
-            return 0;
+//     private int solve(int i, int j, int[][] grid, int[][] t) {
+//         if (i >= grid.length || j >= grid[0].length)
+//             return 0;
 
-        if (t[i][j] != -1)
-            return t[i][j];
+//         if (grid[i][j] == 0)
+//             return 0;
 
-        // Right
-        int right = solve(i, j + 1, grid, t);
-        // Diagonal
-        int diagonal = solve(i + 1, j + 1, grid, t);
-        // Below
-        int below = solve(i + 1, j, grid, t);
+//         if (t[i][j] != -1)
+//             return t[i][j];
 
-        return t[i][j] = 1 + Math.min(Math.min(right, diagonal), below);
-    }
+//         // Right
+//         int right = solve(i, j + 1, grid, t);
+//         // Diagonal
+//         int diagonal = solve(i + 1, j + 1, grid, t);
+//         // Below
+//         int below = solve(i + 1, j, grid, t);
 
-    public int countSquares(int[][] matrix) {
-        int result = 0;
-        m = matrix.length;
-        n = matrix[0].length;
-        int[][] t = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                t[i][j] = -1; // Initialize the memoization table with -1
-            }
-        }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                result += solve(i, j, matrix, t);
-            }
-        }
-        return result;
-    }
-}
+//         return t[i][j] = 1 + Math.min(Math.min(right, diagonal), below);
+//     }
+
+//     public int countSquares(int[][] matrix) {
+//         int result = 0;
+//         m = matrix.length;
+//         n = matrix[0].length;
+//         int[][] t = new int[m][n];
+//         for (int i = 0; i < m; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 t[i][j] = -1; // Initialize the memoization table with -1
+//             }
+//         }
+//         for (int i = 0; i < m; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 result += solve(i, j, matrix, t);
+//             }
+//         }
+//         return result;
+//     }
+// }
 
 //Approach - 3 (BottomUp)

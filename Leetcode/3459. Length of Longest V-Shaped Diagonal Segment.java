@@ -82,69 +82,70 @@ class Solution {
  * - m * n * 4 * 2 is the size of the memoization array
  * - Plus O(L) for recursion stack depth where L is the maximum path length
  */
-class Solution {
-    int[][] directions = {
-            { 1, 1 }, // 0: TL-BR
-            { 1, -1 }, // 1: TR-BL
-            { -1, -1 }, // 2: BR-TL
-            { -1, 1 } // 3: BL-TR
-    };
 
-    public int lenOfVDiagonal(int[][] grid) {
-        int m = grid.length;
-        int n = grid[0].length;
-        int result = 0;
+// class Solution {
+//     int[][] directions = {
+//             { 1, 1 }, // 0: TL-BR
+//             { 1, -1 }, // 1: TR-BL
+//             { -1, -1 }, // 2: BR-TL
+//             { -1, 1 } // 3: BL-TR
+//     };
 
-        // Memoization: [row][col][dir][canTurn]
-        Integer[][][][] memo = new Integer[m][n][4][2];
+//     public int lenOfVDiagonal(int[][] grid) {
+//         int m = grid.length;
+//         int n = grid[0].length;
+//         int result = 0;
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (grid[i][j] == 1) {
-                    for (int d = 0; d < 4; d++) {
-                        result = Math.max(result, 1 + dfs(i, j, d, true, 0, grid, memo));
-                    }
-                }
-            }
-        }
-        return result;
-    }
+//         // Memoization: [row][col][dir][canTurn]
+//         Integer[][][][] memo = new Integer[m][n][4][2];
 
-    private int dfs(int row, int col, int dir, boolean canTurn, int depth, int[][] grid, Integer[][][][] memo) {
-        int m = grid.length, n = grid[0].length;
-        int turnFlag = canTurn ? 1 : 0;
+//         for (int i = 0; i < m; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 if (grid[i][j] == 1) {
+//                     for (int d = 0; d < 4; d++) {
+//                         result = Math.max(result, 1 + dfs(i, j, d, true, 0, grid, memo));
+//                     }
+//                 }
+//             }
+//         }
+//         return result;
+//     }
 
-        if (memo[row][col][dir][turnFlag] != null) {
-            return memo[row][col][dir][turnFlag];
-        }
+//     private int dfs(int row, int col, int dir, boolean canTurn, int depth, int[][] grid, Integer[][][][] memo) {
+//         int m = grid.length, n = grid[0].length;
+//         int turnFlag = canTurn ? 1 : 0;
 
-        int expected = (depth % 2 == 0) ? 2 : 0;
-        int maxLen = 0;
+//         if (memo[row][col][dir][turnFlag] != null) {
+//             return memo[row][col][dir][turnFlag];
+//         }
 
-        // Move in current direction
-        int newRow = row + directions[dir][0];
-        int newCol = col + directions[dir][1];
+//         int expected = (depth % 2 == 0) ? 2 : 0;
+//         int maxLen = 0;
 
-        if (isValid(newRow, newCol, m, n) && grid[newRow][newCol] == expected) {
-            maxLen = Math.max(maxLen, 1 + dfs(newRow, newCol, dir, canTurn, depth + 1, grid, memo));
-        }
+//         // Move in current direction
+//         int newRow = row + directions[dir][0];
+//         int newCol = col + directions[dir][1];
 
-        // Try one clockwise turn if allowed
-        if (canTurn) {
-            int newDir = (dir + 1) % 4;
-            int turnRow = row + directions[newDir][0];
-            int turnCol = col + directions[newDir][1];
+//         if (isValid(newRow, newCol, m, n) && grid[newRow][newCol] == expected) {
+//             maxLen = Math.max(maxLen, 1 + dfs(newRow, newCol, dir, canTurn, depth + 1, grid, memo));
+//         }
 
-            if (isValid(turnRow, turnCol, m, n) && grid[turnRow][turnCol] == expected) {
-                maxLen = Math.max(maxLen, 1 + dfs(turnRow, turnCol, newDir, false, depth + 1, grid, memo));
-            }
-        }
+//         // Try one clockwise turn if allowed
+//         if (canTurn) {
+//             int newDir = (dir + 1) % 4;
+//             int turnRow = row + directions[newDir][0];
+//             int turnCol = col + directions[newDir][1];
 
-        memo[row][col][dir][turnFlag] = maxLen;
-        return maxLen;
-    }
+//             if (isValid(turnRow, turnCol, m, n) && grid[turnRow][turnCol] == expected) {
+//                 maxLen = Math.max(maxLen, 1 + dfs(turnRow, turnCol, newDir, false, depth + 1, grid, memo));
+//             }
+//         }
 
-    private boolean isValid(int i, int j, int m, int n) {
-        return i >= 0 && i < m && j >= 0 && j < n;
-    }
-}
+//         memo[row][col][dir][turnFlag] = maxLen;
+//         return maxLen;
+//     }
+
+//     private boolean isValid(int i, int j, int m, int n) {
+//         return i >= 0 && i < m && j >= 0 && j < n;
+//     }
+// }

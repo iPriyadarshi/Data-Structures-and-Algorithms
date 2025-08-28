@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Finds the largest possible perimeter of a triangle using three sides from the given array.
  * The solution uses the triangle inequality theorem: the sum of any two sides must be greater
