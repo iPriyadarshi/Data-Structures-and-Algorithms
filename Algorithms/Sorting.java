@@ -1,10 +1,15 @@
 import java.util.Arrays;
 // import java.util.Collections;
 
+// In-place sorting refers to sorting algorithms that do not require extra space proportional to the input size.
+// Instead, they rearrange the elements within the original data structure,
+// typically using only a constant amount of additional memory.
+
 public class Sorting {
     // Bubble Sort
     // Time Complexity: O(n^2)
-    // Space Complexity: O(1)
+    // Space Complexity: O(1) -- In-place sorting
+    // Stable
     public static void bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -21,7 +26,8 @@ public class Sorting {
 
     // Optimized Bubble Sort
     // Time Complexity: O(n^2)
-    // Space Complexity: O(1)
+    // Space Complexity: O(1) -- In-place sorting
+    // Stable
     public static void optimizedBubbleSort(int[] arr) {
         int n = arr.length;
         boolean swapped;
@@ -45,7 +51,8 @@ public class Sorting {
 
     // Selection Sort
     // Time Complexity: O(n^2)
-    // Space Complexity: O(1)
+    // Space Complexity: O(1) -- In-place sorting
+    // Not Stable
     public static void selectionSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -65,10 +72,10 @@ public class Sorting {
 
     // Insertion Sort
     // Time Complexity: O(n^2)
-    // Space Complexity: O(1)
+    // Space Complexity: O(1) -- In-place sorting
+    // Stable
     public static void insertionSort(int[] arr) {
-        // Pick an element from unsorted part and place it in the correct position in
-        // sorted part
+        // Pick an element from unsorted part and place it in the correct position in sorted part
         int n = arr.length;
         for (int i = 1; i < n; i++) {
             // Insert arr[i] into the sorted sequence arr[0..i-1]
@@ -100,6 +107,8 @@ public class Sorting {
     // Merge Sort
     // Time Complexity: O(n log n)
     // Space Complexity: O(n)
+    // Not In-place sorting
+    // Stable
     public static void mergeSort(int[] arr) {
         if (arr.length < 2) {
             return;
@@ -172,8 +181,7 @@ public class Sorting {
     }
 
     // Radix Sort
-    // Time Complexity: O(d * (n + k)), where d is the number of digits in the
-    // maximum
+    // Time Complexity: O(d * (n + k)), where d is the number of digits in the maximum
     // Space Complexity: O(k)
     public static void radixSort(int[] arr) {
         // Find the maximum number to know the number of digits
@@ -213,6 +221,8 @@ public class Sorting {
     // Quick Sort
     // Time Complexity: O(n log n) on average, O(n^2) in the worst case
     // Space Complexity: O(log n) due to recursion stack
+    // In-place sorting
+    // Not Stable
     public static void quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
@@ -242,5 +252,39 @@ public class Sorting {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+
+    // Heap Sort
+    // Time Complexity: O(n log n)
+    // Space Complexity: O(1) --- in-place sorting
+    // Not Stable
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
+        // Build max heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+        // Extract elements from heap
+        for (int i = n - 1; i > 0; i--) {
+            swap(arr, 0, i);
+            heapify(arr, i, 0);
+        }
+    }
+
+    private static void heapify(int[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left < n && arr[left] > arr[largest]) {
+            largest = left;
+        }
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(arr, i, largest);
+            heapify(arr, n, largest);
+        }
     }
 }
