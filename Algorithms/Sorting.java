@@ -180,9 +180,12 @@ public class Sorting {
         }
     }
 
-    // Radix Sort
-    // Time Complexity: O(d * (n + k)), where d is the number of digits in the maximum
-    // Space Complexity: O(k)
+// Radix Sort
+// Time Complexity: O(d * (n + k)), where d is the number of digits in the maximum
+// Space Complexity: O(n+k)
+//   - O(n): Temporary array to store sorted output at each digit level.
+//   - O(k): Count array or buckets to tally digit occurrences (e.g., 10 buckets for base-10).
+
     public static void radixSort(int[] arr) {
         // Find the maximum number to know the number of digits
         int max = Integer.MIN_VALUE;
