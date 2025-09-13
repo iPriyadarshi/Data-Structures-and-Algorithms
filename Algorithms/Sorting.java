@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Sorting {
     // Bubble Sort
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^2), where n is the number of elements in the array
     // Space Complexity: O(1) -- In-place sorting
     // Stable
     public static void bubbleSort(int[] arr) {
@@ -25,7 +25,7 @@ public class Sorting {
     }
 
     // Optimized Bubble Sort
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^2), where n is the number of elements in the array
     // Space Complexity: O(1) -- In-place sorting
     // Stable
     public static void optimizedBubbleSort(int[] arr) {
@@ -50,7 +50,7 @@ public class Sorting {
     }
 
     // Selection Sort
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^2), where n is the number of elements in the array
     // Space Complexity: O(1) -- In-place sorting
     // Not Stable
     public static void selectionSort(int[] arr) {
@@ -71,7 +71,7 @@ public class Sorting {
     }
 
     // Insertion Sort
-    // Time Complexity: O(n^2)
+    // Time Complexity: O(n^2), where n is the number of elements in the array
     // Space Complexity: O(1) -- In-place sorting
     // Stable
     public static void insertionSort(int[] arr) {
@@ -90,7 +90,7 @@ public class Sorting {
     }
 
     // Inbuilt Sorting
-    // Time Complexity: O(n log n)
+    // Time Complexity: O(n log n), where n is the number of elements in the array
     // Space Complexity: O(n)
     public static void inbuiltSort(int[] arr) {
         Arrays.sort(arr);
@@ -105,7 +105,7 @@ public class Sorting {
     }
 
     // Merge Sort
-    // Time Complexity: O(n log n)
+    // Time Complexity: O(n log n), where n is the number of elements in the array
     // Space Complexity: O(n)
     // Not In-place sorting
     // Stable
@@ -145,7 +145,7 @@ public class Sorting {
     }
 
     // Counting Sort
-    // Time Complexity: O(n + k)
+    // Time Complexity: O(n + k), where n is the number of elements in input array and k is the range of the input
     // Space Complexity: O(k)
     public static void countingSort(int[] arr) {
         // Used when range:=(max-min) of input is known and limited
