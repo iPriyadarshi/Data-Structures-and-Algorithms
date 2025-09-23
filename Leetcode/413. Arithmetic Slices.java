@@ -8,7 +8,7 @@ class Solution {
 
         int totalSlices = 0;
         int currentSlices = 0;
-
+        // currentSlices keeps track of the number of arithmetic slices ending at the current index
         for (int i = 2; i < n; i++) {
             if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]) {
                 currentSlices++;
